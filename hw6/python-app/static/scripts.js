@@ -281,7 +281,7 @@ const getBusinessInfo = async (id) => {
                 paragraph.textContent = result.hours[0].is_open_now ? "Open Now" : "Closed";
                 paragraph.style.padding = "8px";
                 paragraph.style.backgroundColor = result.hours[0].is_open_now ? "green" : "red";
-                paragraph.style.width = "60px";
+                paragraph.style.width = "80px";
                 paragraph.style.textAlign = "center";
                 paragraph.style.borderRadius = "12px";
                 section.appendChild(header);
