@@ -1,0 +1,9 @@
+.bi-arrow-left{
+    font-size: 20px;
+}
+a{
+    cursor: pointer;
+}
+.was-validated .custom-select:valid {
+    background-image: none;
+  }

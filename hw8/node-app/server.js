@@ -7,10 +7,10 @@ const axios = require('axios');
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.set('trust proxy', true);
 
-app.get('/', (req, res) => {
-    res.send("Hello World!");
-});
+app.use(express.static(process.cwd()+"/front-end/dist/front-end"))
+
 var headers = {
     'Authorization': `Bearer ${config.YELP_API_KEY}` 
 };
@@ -29,7 +29,17 @@ app.get('/yelp/search', async (req, res) => {
         .then(response => {
             return response.data;
         })
-    return res.json(data);
+    var results = [];
+    let i = 0;
+    for(const item of data["businesses"]){
+        if(i >=10){
+            break;
+        }
+        results.push(item)
+        i += 1;
+    } 
+    var output = {"businesses": results, "total":results.length}
+    return res.json(output);
 });
 app.get('/yelp/business', async (req,res) => {
     const {business_id} = req.query;
@@ -43,7 +53,7 @@ app.get('/yelp/business', async (req,res) => {
         .then(response => {
             return response.data;
         })
-
+    
     return res.json(data);
 });
 
@@ -93,7 +103,11 @@ app.get('/yelp/reviews', async (req,res) => {
     }
     const output = {"reviews": results};
     return res.json(output);
-})
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(process.cwd()+"/front-end/dist/front-end/index.html");
+});
 const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`);

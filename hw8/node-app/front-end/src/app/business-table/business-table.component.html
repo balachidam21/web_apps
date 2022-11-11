@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-9 mx-auto">
+        <div class="card">
+        <table class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Image</th>
+                <th scope="col">Business Name</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Distance (miles)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let b of businessList;index as i;" (click)="getBusinessDetails(b.id);">
+                <th scope="row">{{i+1}}</th>
+                <td>
+                    <img  style="width: 75px; height: 75px;" src="{{b.image_url}}" />
+                </td>
+                <td>{{b.name}}</td>
+                <td>{{b.rating}}</td>
+                <td>{{b.distance}} </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

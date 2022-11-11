@@ -1,8 +1,14 @@
-<h1>
-  {{title}}
-</h1>
-<nav>
-  <a routerLink="/search">Search</a>
-  <a routerLink="/bookings">My Bookings</a>
+
+<nav class="navbar navbar-expand static-top mb-5">
+  <div class="container">
+    <ul class="nav navbar-nav ms-auto">
+      <li class="nav-item m-1 active" [class.active]="selected_search">
+        <a class="nav-link" (click)="searchClick()" routerLink="/search">Search</a>
+      </li>
+      <li class="nav-item m-1" [class.active]="selected_bookings">
+        <a class="nav-link" (click) = "bookingClick()" routerLink="/bookings">My Bookings</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 <router-outlet></router-outlet>

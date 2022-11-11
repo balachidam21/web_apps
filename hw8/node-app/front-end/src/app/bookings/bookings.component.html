@@ -1,1 +1,44 @@
-<p>bookings works!</p>
+<ng-template [ngIf]="showBookings" [ngIfElse]="empty">
+  <div class="d-flex-column flex-wrap align-items-center m-3">
+    <div class="row">
+      <h3 class="text-center fs-5 ">List of your reservations</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-7 col-12 mx-auto">
+        <div class="card table-responsive">
+          <table class="table text-center m-0">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Business Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">E-mail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let b of bookingDetails;index as i;">
+                <th scope="row">{{i+1}}</th>
+                <td>{{b.business_name}}</td>
+                <td>{{b.date}}</td>
+                <td>{{b.hour}}:{{b.minute}}</td>
+                <td>{{b.email}}</td>
+                <td><i class="bi bi-trash" (click)="cancelReservation(b.business_name)"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #empty>
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="empty card text-center">
+        <p class="text-danger fs-4 fw-normal m-0">No reservations to show</p>
+      </div>
+    </div>
+  </div>
+</ng-template>

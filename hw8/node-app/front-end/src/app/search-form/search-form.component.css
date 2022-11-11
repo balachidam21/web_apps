@@ -1,0 +1,12 @@
+.required-field::after {
+    content: "*";
+    color: red;
+  }
+  #auto-detect
+  {
+    margin-right: 10px;
+  }
+  .noresults
+  {
+    border-radius: 25px;
+  }

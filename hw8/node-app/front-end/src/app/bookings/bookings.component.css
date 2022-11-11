@@ -1,0 +1,10 @@
+i 
+{
+  cursor: pointer;
+}
+.empty{
+  border-radius: 25px;
+}
+tbody tr:hover{
+  background-color: #D3D3D3;
+}
